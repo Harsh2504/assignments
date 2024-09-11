@@ -39,7 +39,7 @@ function unshiftExample(arr, element) {
   arr.unshift(element);
   console.log("After unshift:", arr);
 }
-unshiftExample([1, 2, 3], 0);
+unshiftExample([1, 2, 3],7);
 
 // concat()
 function concatExample(arr1, arr2) {

@@ -14,28 +14,24 @@
 */
 
 function calculateTotalSpentByCategory(transactions) {
-  const categoryMap = {};
-
-  // Iterate through transactions to calculate total spent by category
-  transactions.forEach(transaction => {
-    const { category, price } = transaction;
-
-    // If the category is not in the map, initialize it with the current transaction's price
-    if (!categoryMap[category]) {
-      categoryMap[category] = price;
-    } else {
-      // If the category is already in the map, add the current transaction's price to the existing total
-      categoryMap[category] += price;
+  const categories = [];
+  for (let x in transactions) {
+    categories.push(transactions[x].category);
+  }
+  const uniqueCategories = new Set(categories);
+  const totalExpense = [];
+  
+  for (let category of uniqueCategories) {
+    let totalSpent = 0;
+    for (let y in transactions) {
+      if (transactions[y].category === category) {
+        totalSpent += transactions[y].price;
+      }
     }
-  });
+    totalExpense.push({ category: category, totalSpent: totalSpent });
+  }
 
-  // Convert the categoryMap into an array of objects
-  const result = Object.keys(categoryMap).map(category => ({
-    category,
-    totalSpent: categoryMap[category],
-  }));
-
-  return result;
+  return totalExpense;
 }
 
 module.exports = calculateTotalSpentByCategory;

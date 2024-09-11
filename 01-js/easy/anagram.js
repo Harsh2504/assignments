@@ -13,8 +13,10 @@ function isAnagram(str1, str2) {
   // Sort characters and compare the sorted strings
   const sortedStr1 = cleanStr1.split('').sort().join('');
   const sortedStr2 = cleanStr2.split('').sort().join('');
-
+  console.log(cleanStr1.split('').sort().join(''))
   return sortedStr1 === sortedStr2;
 }
+
+isAnagram("cap","pac")
 
 module.exports = isAnagram;
